@@ -15,36 +15,29 @@ for (let link of links) {
 
 }
 
+
 let randomBeer = async () => {
     let randomBeer = "https://api.punkapi.com/v2/beers/random"
     
     let beerData = await fetch(randomBeer)
-    const data=beerData.json()
-    document.getElementById("name").innerHTML=beerData[0].name
-    document.querySelector("image").src=beerData[0].image_url
+    const data= await beerData.json()
+    console.log(data[0].name)
+    document.querySelector(".name").innerHTML=data[0].name
+    document.querySelector(".image").src=data[0].image_url
 }
 
+randomBeer()
 
 
 
 
 
 
-// const beerImage=document.getElementById("beer-img")
-// const beerButton=document.getElementById("btn-beer")
 
-// beerImage.addEventListener("click",getRandomBeer)
 
-// function getRandomBeer(obj){
-//     fetch('https://api.punkapi.com/v2/beers/random')
-//     .then(res => res.json())
-//     .then(data =>{
-//         beerImage.innerHTML=`
-//         <p> Photo: ${obj.image_url}/>
-//         <p>beer name: ${obj.name}<p/>
-//         `
-//     })
-// }
+
+
+
 
 
 
