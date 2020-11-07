@@ -1,40 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Document</title>
-</head>
-<body>
-    <nav >
-        <a href="#">Home</a>
-        <a href="#">Search</a>
-        <a href="#">Info</a>
+  </head>
+  <body>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Search</a>
+      <a href="#">Info</a>
     </nav>
     <main>
-        <section class="home active"><br>
-            <div class="results">
-                 <div class="result">
-                     <img class="image" src=""alt=""/>
-                     <p></p>
-                </div>
-                <div class="beer-name">
-                    <h1 class="name"></h1> 
-                </div>
-                <div class="beer-buttons">
-                    <button class="btn_beer">See More ></button>
-                </div>
+      <section class="home active">
+        <div class="results">
+          <div class="result">
+            <img class="image" src="" alt="" />
+            <p></p>
+          </div>
+          <div class="beer-name">
+            <h1 class="name"></h1>
+          </div>
+          <div class="footer">
+            <div class="beer-buttons">
+              <button class="see-more">See More ></button>
+              <button class="btn_beer">Get Beer</button>
             </div>
-            <!-- <h1>Home</h1> -->
-        </section>
-        <section class="search">
-            <h1>Search</h1>
-        </section>
-        <section class="info">
-            <h1>Info</h1>
-        </section>
+          </div>
+        </div>
+        <!-- <h1>Home</h1> -->
+      </section>
+      <section class="search">
+        <h1>Search</h1>
+      </section>
+      <section class="info">
+        <div class="detail">
+          <a href="#close" class="modal-overlay" aria-label="Close"></a>
+
+          <div class="detail-header">
+            <a
+              href="#close"
+              class="btn btn-clear float-right close"
+              aria-label="Close"
+            ></a>
+
+            <h4 class="detail-beer-name">Name</h4>
+          </div>
+          <div class="detail-container">
+            <div class="detail-header"></div>
+            <div class="detail-body">
+              <div class="detail-content">
+                <class class="card-img">
+                  <img alt="beer" class="img-responsive" />
+                </class>
+                <img class="beer-pic" src="" alt="" />
+                <p class="description"></p>
+                <p class="abv"></p>
+                <p class="volume"></p>
+                <h4 class="detail-title">Ingredients:</h4>
+                <ul class="malt"></ul>
+                <h4 class="detail-title">Hops:</h4>
+                <ul class="hops"></ul>
+                <h4 class="detail-title">Food-pairing:</h4>
+                <ul class="food-pairing"></ul>
+                <p class="tips"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h1>Info</h1>
+      </section>
     </main>
-    <script src="js/main.js"></script> 
-</body>
+    <script src="js/main.js"></script>
+  </body>
 </html>
