@@ -105,7 +105,6 @@ const displayIngredients = () => {
 
     maltLiElement.appendChild(label);
     maltLiElement.appendChild(value);
-
     maltUlElement.appendChild(maltLiElement);
   }
 

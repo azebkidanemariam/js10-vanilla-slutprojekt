@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
-    <title>Document</title>
+    <title>Beer projekt</title>
   </head>
   <body>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Search</a>
-      <a href="#">Info</a>
+    <nav class="nav-container" >
+      <a href="#" style="text-decoration:none">Home</a>
+      <a href="#" style="text-decoration: none;">Search</a>
+      <a href="#" style="text-decoration: none;">Info</a>
     </nav>
     <main>
       <section class="home active">
@@ -32,7 +32,13 @@
         <!-- <h1>Home</h1> -->
       </section>
       <section class="search">
-        <h1>Search</h1>
+        <div class="wrapper">
+          <input type="text" class="input" 
+          placeholder="What are you looking for?">
+          <div class="searchbtn"><i class="fas fa-search"></i></div>
+        </div>
+        
+        <!-- <h1>Search</h1> -->
       </section>
       <section class="info">
         <div class="detail">
