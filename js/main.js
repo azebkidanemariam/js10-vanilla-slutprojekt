@@ -130,3 +130,45 @@ function displayFoodPairing() {
     foodPairingUlElement.appendChild(foodPairingLiElemnt);
   }
 }
+
+
+
+const charactersList = document.getElementById('charactersList');
+const searchBar=document.getElementById('searchBar')
+let beerCharacters = [];
+searchBar.addEventListener('keyup',(e) =>{
+  const searchString=e.target.value.toLowerCase();
+  const filteredCharacters=beerCharacters.filter(character =>{
+    return character.name.toLowerCase().includes(searchString)
+  })
+  displayCharacters(filteredCharacters)
+})
+const loadCharacters = async () => {
+    try {
+        const res = await fetch('https://api.punkapi.com/v2/beers');
+        beerCharacters = await res.json();
+        displayCharacters(beerCharacters);
+        console.log(beerCharacters)
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+const displayCharacters = (characters) => {
+    const htmlString = characters
+        .map((character) => {
+            return `
+            <li class="character">
+                <h2>${character.name}</h2>
+                <img src="${character.image_url}"></img>
+            </li>
+        `;
+        })
+        .join('');
+    charactersList.innerHTML = htmlString;
+};
+
+loadCharacters();
+
+
+

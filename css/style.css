@@ -7,9 +7,9 @@ main > section.active {
 }
 
 nav {
-  width: 90%;
+  width: 100%;
   /* height: 100px; */
-  background-color: darksalmon;
+  background-color: rgba(245, 245, 245, 0.472);
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -19,13 +19,14 @@ nav {
   font-size: larger;
   color: darkseagreen;
   text-decoration: none;
+  object-fit: contain;
 }
 
 body {
   background-image: linear-gradient(
     180deg,
-    rgba(247, 247, 247, 1) 23.8%,
-    rgba(252, 221, 221, 1) 92%
+    rgba(247, 247, 247, 0.294) 23.8%,
+    peru(0, 0, 139, 0.993) 92%
   );
   font-family: "Open Sans", sans-serif;
   display: flex;
@@ -45,34 +46,41 @@ body {
 .result {
   background-color: #fff;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 10px;
   height: 400px;
   width: 600px;
-  color: #fff;
+  /* color: #fff; */
 }
 
 .result img {
   object-fit: contain;
-  height: 100%;
-  width: 100%;
+  height: 50%;
+  width: 80%;
 }
 .detail img {
-  object-fit: cover;
+  object-fit: contain;
+  width: 200px;
   height: 200px;
+  background-color: #eaeaea;
+  border-radius: 3px;
+  padding: 10px 20px;
 }
 
+
 button {
-  background-color: darksalmon;
+  background-color: rgba(245, 245, 245, 0.472);
   border: 0;
   border-radius: 4px;
-  color: #fff;
+  color: darkblue;
   font-size: 18px;
   padding: 18px;
   margin: 10px;
   width: 300px;
 }
+
 
 button:active {
   transform: scale(0.98);
@@ -86,37 +94,113 @@ body main .info .detail-container {
   width: 450px;
 }
 
-body main .detail .detail-container .detail-body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-body main .detail .detail-container .detail-body .modal-content .image {
-  width: 150px;
-  height: 200px;
-}
-
 .detail-label {
   font-weight: 600;
   padding-right: 8px;
+  color:peru;
   /* line-height: 12px; */
   /* font-size: 12px; */
 }
 .group-li {
   list-style: none;
   font-size: 12px;
+  padding-inline-start: 0;
+  background-color: #eaeaea;
+  border-radius: 3px;
+  padding: 10px 20px;
+  text-align: left; 
 }
 
 .value-txt {
+  list-style: none;
+  font-size: 12px;
+  padding-inline-start: 0;
+  background-color: #eaeaea;
+  border-radius: 3px;
+  padding: 10px 20px;
+  text-align: left; 
+}
+
+
+body {
+  font-family: sans-serif;
+  background-color: #111d4a;
+}
+
+* {
+  box-sizing: border-box;
+}
+h1 {
+  color:peru;
+  margin-bottom: 30px;
+}
+h4{
+  color:peru;
+}
+.container {
+  padding: 40px;
+  margin: 0 auto;
+  max-width: 1000px;
+  text-align: center;
+}
+
+#charactersList {
+  padding-inline-start: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 20px;
+}
+
+.character {
+  list-style-type: none;
+  background-color: #eaeaea;
+  border-radius: 3px;
+  padding: 10px 20px;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-areas:
+      'name image'
+      'house image';
+  text-align: left;
+}
+
+.character > h2 {
+  grid-area: name;
+  margin-bottom: 0px;
+}
+
+.character > p {
+  grid-area: house;
+  margin: 0;
+  margin-top: -18px;
+}
+
+.character > img {
+  max-height: 100px;
+  grid-area: image;
+}
+
+#searchBar {
+  width: 100%;
+  height: 30px;
+  border-radius: 3px;
+  border: 1px solid #eaeaea;
+  padding: 5px 10px;
   font-size: 12px;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+#searchWrapper {
+  position: relative;
+}
+
+#searchWrapper::after {
+  content: '🔍';
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
+ /* @import url('https://fonts.googleapis.com/css?family=Comfortaa');
 
 *{
 	margin: 0;
@@ -127,7 +211,7 @@ body main .detail .detail-container .detail-body .modal-content .image {
 }
 
 body{
-	/* background: url('https://i.imgur.com/NMnbn2s.jpg') no-repeat center; */
+	background: url('https://i.imgur.com/NMnbn2s.jpg') no-repeat center; 
 	background-size: cover;
 	width: 100%;
 	height: 100vh;
@@ -169,4 +253,4 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 18px;
-}
+} */
