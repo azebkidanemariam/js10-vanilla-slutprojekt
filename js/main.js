@@ -1,4 +1,3 @@
-
 const links = document.querySelectorAll("nav > a");
 
 for (let link of links) {
@@ -12,39 +11,40 @@ for (let link of links) {
     const section = document.querySelector("." + linkName);
     if (linkName === "info") {
       document.querySelector(".home").classList.add("active");
-      displayBeerInfoPage();
+      displayBeerInfoPage(randomBeer);
     } else {
       section.classList.add("active");
     }
   });
 }
 
-let beer = {};
-let randomBeer = async () => {
+let randomBeer = {};
+let fetchRandomBeer = async () => {
   let randomBeerUrl = "https://api.punkapi.com/v2/beers/random";
 
   const beerData = await fetch(randomBeerUrl);
   const data = await beerData.json();
-  beer = data[0];
-  if (!beer.image_url) {
-    beer.image_url =
+  randomBeer = data[0];
+  if (!randomBeer.image_url) {
+    randomBeer.image_url =
       "https://cdn.discordapp.com/attachments/772019634006130718/774658712957878312/no-image-available.png";
   }
-  document.querySelector(".name").innerHTML = beer.name;
-  document.querySelector(".image").src = beer.image_url;
+  document.querySelector(".name").innerHTML = randomBeer.name;
+  document.querySelector(".image").src = randomBeer.image_url;
 };
 
-randomBeer();
+fetchRandomBeer();
 
-let displayBeerInfoPage = () => {
+let displayBeerInfoPage = (beer) => {
   //remove active class from home link
   document.querySelector(".home").classList.remove("active");
+  document.querySelector(".search").classList.remove("active");
   //add the active class to info link
   document.querySelector(".info").classList.add("active");
   let detailBeerName = document.querySelector(
     "body > main > section.info.active > div > div.detail-header > h4"
   );
-  
+
   detailBeerName.innerText = beer.name;
   //img
   document.querySelector("div.detail-body > div > class > img").src =
@@ -62,9 +62,8 @@ let displayBeerInfoPage = () => {
   document.querySelector(
     ".tips"
   ).innerHTML = `<span class="detail-label">Brewers tips</span> <p class="value-txt">${beer.brewers_tips}</p>`;
-  displayIngredients();
-  displayFoodPairing();
-
+  displayIngredients(beer);
+  displayFoodPairing(beer);
 };
 function elementFactory(tag, text, cssClass) {
   const el = document.createElement(tag);
@@ -76,11 +75,11 @@ function elementFactory(tag, text, cssClass) {
 }
 
 document.querySelector(".btn_beer").addEventListener("click", async () => {
-  await randomBeer();
+  await fetchRandomBeer();
 });
 
 document.querySelector(".see-more").addEventListener("click", async () => {
-  displayBeerInfoPage();
+  displayBeerInfoPage(randomBeer);
 });
 
 let closeButt = document.querySelector(".close");
@@ -88,7 +87,7 @@ closeButt.addEventListener("click", () => {
   detail.classList.remove("active");
 });
 
-const displayIngredients = () => {
+const displayIngredients = (beer) => {
   let ingidientObject = beer.ingredients;
   let maltArray = ingidientObject.malt;
   let hopsArray = ingidientObject.hops;
@@ -121,7 +120,7 @@ const displayIngredients = () => {
   }
 };
 
-function displayFoodPairing() {
+function displayFoodPairing(beer) {
   let foodPairingUlElement = document.querySelector("ul.food-pairing");
   let foodPairingArray = beer.food_pairing;
 
@@ -131,44 +130,63 @@ function displayFoodPairing() {
   }
 }
 
-
-
-const charactersList = document.getElementById('charactersList');
-const searchBar=document.getElementById('searchBar')
-let beerCharacters = [];
-searchBar.addEventListener('keyup',(e) =>{
-  const searchString=e.target.value.toLowerCase();
-  const filteredCharacters=beerCharacters.filter(character =>{
-    return character.name.toLowerCase().includes(searchString)
-  })
-  displayCharacters(filteredCharacters)
-})
+const beerResultListUl = document.getElementById("beerResultList");
+const searchBar = document.getElementById("searchBar");
+let beerResultList = [];
+searchBar.addEventListener("keyup", (e) => {
+  const searchString = e.target.value.toLowerCase();
+  const filteredBeers = beerResultList.filter((beer) => {
+    return beer.name.toLowerCase().includes(searchString);
+  });
+  displayCharacters(filteredBeers);
+  //Get all the lis in the ul-beerResultList
+  //for each of the li
+  //attach an event listner
+  // what do you want to happen when a user clicks on an li?
+  //you pobably want to copy the same function as in the eventlisten for see_more button
+});
 const loadCharacters = async () => {
-    try {
-        const res = await fetch('https://api.punkapi.com/v2/beers');
-        beerCharacters = await res.json();
-        displayCharacters(beerCharacters);
-        console.log(beerCharacters)
-    } catch (err) {
-        console.error(err);
-    }
+  try {
+    const res = await fetch("https://api.punkapi.com/v2/beers");
+    beerResultList = await res.json();
+    displayCharacters(beerResultList);
+    console.log(beerResultList);
+  } catch (err) {
+    console.error(err);
+  }
 };
 
-const displayCharacters = (characters) => {
-    const htmlString = characters
-        .map((character) => {
-            return `
-            <li class="character">
-                <h2>${character.name}</h2>
-                <img src="${character.image_url}"></img>
+const displayCharacters = (beers) => {
+  //const htmlString = beers
+  beers.map((beer) => {
+    console.log("in displayCharacters", beer);
+    let liElement = elementFactory("li", "", "character");
+    liElement.setAttribute("data-beer", JSON.stringify(beer));
+    let h2Element = elementFactory("h2", beer.name);
+    let imgElement = elementFactory("img");
+    imgElement.setAttribute("src", beer.image_url);
+    liElement.appendChild(h2Element);
+    liElement.appendChild(imgElement);
+
+    //attach click event listner to every li
+    liElement.addEventListener("click", () => {
+      let parsedBeer = JSON.parse(liElement.getAttribute("data-beer"));
+      displayBeerInfoPage(parsedBeer);
+    });
+
+    //add it to the ul
+    beerResultListUl.appendChild(liElement);
+    /*return `
+            <li class="character" data-beer="${beer}">
+                <h2>${beer.name}</h2>
+                <img src="${beer.image_url}"></img>
             </li>
-        `;
-        })
-        .join('');
-    charactersList.innerHTML = htmlString;
+        `;*/
+  });
+  /*.join("");
+  beerResultListUl.innerHTML = htmlString;*/
 };
 
 loadCharacters();
 
-
-
+const button = document.getElementById("searchBar");

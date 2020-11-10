@@ -154,13 +154,14 @@ h4{
 .character {
   list-style-type: none;
   background-color: #eaeaea;
-  border-radius: 3px;
+  border-radius: 8px;
+  border: 3px solid #000000;
   padding: 10px 20px;
   display: grid;
   grid-template-columns: 3fr 1fr;
   grid-template-areas:
-      'name image'
-      'house image';
+    'name image'
+    'house image';
   text-align: left;
 }
 
