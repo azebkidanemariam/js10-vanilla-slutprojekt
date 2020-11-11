@@ -129,7 +129,7 @@ function displayFoodPairing(beer) {
     foodPairingUlElement.appendChild(foodPairingLiElemnt);
   }
 }
-
+//filter search bar
 const beerResultListUl = document.getElementById("beerResultList");
 const searchBar = document.getElementById("searchBar");
 let beerResultList = [];
@@ -139,11 +139,6 @@ searchBar.addEventListener("keyup", (e) => {
     return beer.name.toLowerCase().includes(searchString);
   });
   displayCharacters(filteredBeers);
-  //Get all the lis in the ul-beerResultList
-  //for each of the li
-  //attach an event listner
-  // what do you want to happen when a user clicks on an li?
-  //you pobably want to copy the same function as in the eventlisten for see_more button
 });
 const loadCharacters = async () => {
   try {
@@ -158,8 +153,19 @@ const loadCharacters = async () => {
 
 const displayCharacters = (beers) => {
   //const htmlString = beers
+  console.log("beers in displayCharacters before map", beers);
+  let liElements = [];
+  //Get all the lis in the ul-beerResultList
+  //for each of the li
+  //attach an event listner
+  // what do you want to happen when a user clicks on an li?
+  //you pobably want to copy the same function as in the eventlisten for see_more button
+
+
+  //create lis only for the number of beers to display on the specific page
+  // 
   beers.map((beer) => {
-    console.log("in displayCharacters", beer);
+    // console.log("in displayCharacters", beer);
     let liElement = elementFactory("li", "", "character");
     liElement.setAttribute("data-beer", JSON.stringify(beer));
     let h2Element = elementFactory("h2", beer.name);
@@ -167,26 +173,58 @@ const displayCharacters = (beers) => {
     imgElement.setAttribute("src", beer.image_url);
     liElement.appendChild(h2Element);
     liElement.appendChild(imgElement);
-
+    
     //attach click event listner to every li
     liElement.addEventListener("click", () => {
       let parsedBeer = JSON.parse(liElement.getAttribute("data-beer"));
       displayBeerInfoPage(parsedBeer);
     });
-
+    
     //add it to the ul
-    beerResultListUl.appendChild(liElement);
-    /*return `
-            <li class="character" data-beer="${beer}">
-                <h2>${beer.name}</h2>
-                <img src="${beer.image_url}"></img>
-            </li>
-        `;*/
+    //beerResultListUl.appendChild(liElement);
+    liElements.push(liElement);
   });
-  /*.join("");
-  beerResultListUl.innerHTML = htmlString;*/
+
+  beerResultListUl.innerHTML = "";
+  liElements.forEach((item) => beerResultListUl.appendChild(item));
 };
 
 loadCharacters();
 
-const button = document.getElementById("searchBar");
+// const button = document.getElementById("searchBar");
+// let currentPage=1
+// let records_per_page=5
+// for(var i = (page -1) * records_per_page; i < (page * records_per_page) && i < beers.length; i++) 
+
+function initEvent() {
+  const buttonRight = document.querySelector(".previous");
+  const buttonLeft = document.querySelector(".next");
+  
+  buttonRight.addEventListener("click", next);
+  
+  buttonLeft.addEventListener("click", previous);
+}
+
+function next() {
+  if (currentPage > maxPage) {
+    currentPage = 1;
+  } else {
+    currentPage++;
+  }
+  displayCharacters();
+}
+function previous() {
+  if (currentPage > 0) {
+    currentPage--;
+  } else {
+    currentPage = maxPage;
+  }
+  displayCharacters();
+}
+
+function run() {
+  initEvent();
+  displayCharacters();
+}
+run();
+displayCharacters();

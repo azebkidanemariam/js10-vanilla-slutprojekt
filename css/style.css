@@ -107,8 +107,9 @@ body main .info .detail-container {
   padding-inline-start: 0;
   background-color: #eaeaea;
   border-radius: 3px;
+  border: 3px solid black;
   padding: 10px 20px;
-  text-align: left; 
+  text-align: left;
 }
 
 .value-txt {
@@ -125,6 +126,7 @@ body main .info .detail-container {
 body {
   font-family: sans-serif;
   background-color: #111d4a;
+  /* border: 3px solid black; */
 }
 
 * {
