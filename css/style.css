@@ -69,7 +69,6 @@ body {
   padding: 10px 20px;
 }
 
-
 button {
   background-color: rgba(245, 245, 245, 0.472);
   border: 0;
@@ -80,7 +79,6 @@ button {
   margin: 10px;
   width: 300px;
 }
-
 
 button:active {
   transform: scale(0.98);
@@ -97,7 +95,7 @@ body main .info .detail-container {
 .detail-label {
   font-weight: 600;
   padding-right: 8px;
-  color:peru;
+  color: peru;
   /* line-height: 12px; */
   /* font-size: 12px; */
 }
@@ -119,9 +117,8 @@ body main .info .detail-container {
   background-color: #eaeaea;
   border-radius: 3px;
   padding: 10px 20px;
-  text-align: left; 
+  text-align: left;
 }
-
 
 body {
   font-family: sans-serif;
@@ -133,11 +130,11 @@ body {
   box-sizing: border-box;
 }
 h1 {
-  color:peru;
+  color: peru;
   margin-bottom: 30px;
 }
-h4{
-  color:peru;
+h4 {
+  color: peru;
 }
 .container {
   padding: 40px;
@@ -162,8 +159,8 @@ h4{
   display: grid;
   grid-template-columns: 3fr 1fr;
   grid-template-areas:
-    'name image'
-    'house image';
+    "name image"
+    "house image";
   text-align: left;
 }
 
@@ -197,63 +194,8 @@ h4{
 }
 
 #searchWrapper::after {
-  content: '🔍';
+  content: "🔍";
   position: absolute;
   top: 10px;
   right: 15px;
 }
-
- /* @import url('https://fonts.googleapis.com/css?family=Comfortaa');
-
-*{
-	margin: 0;
-	padding: 0;
-	outline: none;
-	box-sizing: border-box;
-	font-family: 'Comfortaa', cursive;
-}
-
-body{
-	background: url('https://i.imgur.com/NMnbn2s.jpg') no-repeat center; 
-	background-size: cover;
-	width: 100%;
-	height: 100vh;
-}
-
-.wrapper{
-	position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0,0.6);
-    max-width: 550px;
-    width: 100%;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    border-radius: 5px;
-}
-
-.wrapper .input {
-    width: 85%;
-    padding: 15px 20px;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-}
-
-.searchbtn {
-    background: #ffec00;
-    width: 10%;
-    border-radius: 5px;
-    position: relative;
-    cursor: pointer;
-}
-
-.searchbtn .fas{
-	position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 18px;
-} */
