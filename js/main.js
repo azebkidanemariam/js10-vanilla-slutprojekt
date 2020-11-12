@@ -245,7 +245,7 @@ let changePage = (page, beers) => {
     i++
   ) {
     let beer = beers[i];
-    let liElement = elementFactory("li", "", "character");
+    let liElement = elementFactory("li", "", "beer");
     liElement.setAttribute("data-beer", JSON.stringify(beer));
     let h2Element = elementFactory("h2", beer.name);
     let imgElement = elementFactory("img");
