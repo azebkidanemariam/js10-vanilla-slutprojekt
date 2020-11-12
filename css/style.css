@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  margin:0;
+  padding: 0;
 }
 
 main > section {
@@ -9,38 +11,22 @@ main > section {
 main > section.active {
   display: block;
 }
-/* .wrapper{
-  max-width: 400px;
-  min-width: 300px;
-  width: 100%;
-  /* display: block; */
-  /* margin: 0 auto;
-  position: relative;
-  background-color: lightgreen;
-} */ 
+
 
 nav {
-   /* width: 100%; */
-   background-color: rgba(245, 245, 245, 0.472);
+  background-color: whitesmoke;
   margin: 2px; 
- padding: 20px;
-  margin: 0 auto;
-  max-width: 1000px;
-  text-align: center;
-  padding-inline-start: 0;
-  /* display: grid; */
-  /* grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); */
+  padding: 20px;
   grid-gap: 220px;
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
-  align-items: flex-start;
   font-family: "Open Sans", sans-serif;
   font-size: 20px;
 }
   
 body {
-  background-color: dodgerblue;
+  background-image: linear-gradient(180deg,rgba(0, 128, 128, 0.726)23.8%,rgb(173, 217, 230) 92%
+  );
     font-family: "Open Sans", sans-serif;
     display: flex;
     align-items: center;
@@ -55,10 +41,9 @@ body {
       
   }
 
-
-
+/*=====RANDOM BEER OR HOME PAGE STYLE====*/
 .result {
-  background-color:rgb(105, 175, 255);
+  background-color:whitesmoke;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -66,8 +51,7 @@ body {
   margin-top: 10px;
   height: 400px;
   width: 600px;
-  /* border-radius:50%; */
-  /* color: #fff; */
+  
 }
 
 .result img {
@@ -76,6 +60,32 @@ body {
   width: 100%;
   
 }
+
+button {
+  background-color: teal;
+  border: 0;
+  border-radius: 4px;
+  color: darkblue;
+  font-size: 18px;
+  padding: 18px;
+  margin: 10px;
+  width: 300px;
+  
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:focus {
+  outline: none;
+}
+
+/*========INFO PAGE STYLE======*/
+  body main .info .detail-container {
+    width: 600px;
+  }
+
 .detail img {
   object-fit: contain;
   width: 200px;
@@ -96,40 +106,14 @@ body {
   padding-inline-start: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
-  /* grid-gap: 20px; */
+  
   
 }
-
-button {
-  background-color: rgba(245, 245, 245, 0.472);
-  border: 0;
-  border-radius: 4px;
-  color: darkblue;
-  font-size: 18px;
-  padding: 18px;
-  margin: 10px;
-  width: 300px;
-  margin-left: 160px;
-}
-
-button:active {
-  transform: scale(0.98);
-}
-
-button:focus {
-  outline: none;
-}
-
-body main .info .detail-container {
-  width: 450px;
-}
-
 .detail-label {
   font-weight: 600;
   padding-right: 8px;
   color:darkblue;
-  /* line-height: 12px; */
-  /* font-size: 12px; */
+  
 }
 .group-li {
   list-style: none;
@@ -137,7 +121,7 @@ body main .info .detail-container {
   padding-inline-start: 0;
   background-color: #eaeaea;
   border-radius: 3px;
-  border: 3px solid black;
+  border: 3px solid teal;
   padding: 10px 20px;
   text-align: left;
 }
@@ -150,13 +134,13 @@ body main .info .detail-container {
   border-radius: 3px;
   padding: 10px 20px;
   text-align: left;
-  border: 3px solid black;
-  /* width: 450px; */
+  border: 3px solid teal;
+  
 }
 
 h1 {
   color:darkblue;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   
 }
 h4 {
@@ -170,6 +154,7 @@ h4 {
   font-size: larger;
   
 }
+/*=======SEARCH PAGE STYLE=====*/
 .container {
   padding: 40px;
   margin: 0 auto;
@@ -188,7 +173,7 @@ h4 {
   list-style-type: none;
   background-color: #eaeaea;
   border-radius: 8px;
-  border: 3px solid #000000;
+  border: 3px solid teal;
   padding: 10px 20px;
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -213,10 +198,10 @@ h4 {
   max-height: 100px;
   grid-area: image;
 }
-
+ /*======SEARCH BAR STYLE=====*/
 #searchBar {
   width: 100%;
-  height: 30px;
+  height: 60px;
   border-radius: 3px;
   border: 1px solid #eaeaea;
   padding: 5px 10px;
@@ -232,6 +217,7 @@ h4 {
   position: absolute;
   top: 10px;
   right: 15px;
+  bottom:10px ;
 }
 
 /*PAGINATION STYLE*/

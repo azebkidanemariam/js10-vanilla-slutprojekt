@@ -164,7 +164,7 @@ searchBar.addEventListener("keyup", (e) => {
 });
 
 let current_page = 1;
-let beers_per_page = 7;
+let beers_per_page = 5;
 const prevButton = document.getElementById("button_prev");
 const nextButton = document.getElementById("button_next");
 
