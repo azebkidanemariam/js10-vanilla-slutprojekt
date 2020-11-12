@@ -51,14 +51,12 @@ body {
   margin-top: 10px;
   height: 400px;
   width: 600px;
-  
 }
 
 .result img {
   object-fit: contain;
   height: 50%;
   width: 100%;
-  
 }
 
 button {
@@ -70,7 +68,6 @@ button {
   padding: 18px;
   margin: 10px;
   width: 300px;
-  
 }
 
 button:active {
@@ -100,8 +97,8 @@ button:focus {
   margin: 0 auto;
   max-width: 1000px;
   text-align: center;
-
 }
+
 .detail-content{
   padding-inline-start: 0;
   display: grid;
@@ -109,15 +106,18 @@ button:focus {
   
   
 }
+
 .detail-label {
   font-weight: 600;
   padding-right: 8px;
+  font-size: 20px;
   color:darkblue;
   
 }
+
 .group-li {
   list-style: none;
-  font-size: 22px;
+  font-size: 16px;
   padding-inline-start: 0;
   background-color: #eaeaea;
   border-radius: 3px;
@@ -128,24 +128,25 @@ button:focus {
 
 .value-txt {
   list-style: none;
-  font-size: 22px;
+  font-size: 16px;
   padding-inline-start: 0;
   background-color: #eaeaea;
   border-radius: 3px;
   padding: 10px 20px;
   text-align: left;
   border: 3px solid teal;
-  
 }
 
 h1 {
   color:darkblue;
   margin-bottom: 10px;
-  
 }
+
 h4 {
   color: darkblue;
+  font-size: 20px;
 }
+
 .detail-beer-name{
   display:flex;
   justify-content: center;
@@ -154,6 +155,7 @@ h4 {
   font-size: larger;
   
 }
+
 /*=======SEARCH PAGE STYLE=====*/
 .container {
   padding: 40px;
