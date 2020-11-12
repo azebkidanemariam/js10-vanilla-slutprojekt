@@ -163,15 +163,88 @@ searchBar.addEventListener("keyup", (e) => {
   displayBeers(filteredBeers);
 });
 
-const displayBeers = (beers) => {
-  let liElements = [];
-  //Get all the lis in the ul-beerResultList
-  //for each of the li
-  //attach an event listner that displays the info page for a single beer, which is the same as clicking see_more btn
+let current_page = 1;
+let beers_per_page = 7;
+const prevButton = document.getElementById("button_prev");
+const nextButton = document.getElementById("button_next");
 
-  //create lis only for the number of beers to display on the specific page
-  beers.map((beer) => {
-    // console.log("in displayBeers", beer);
+const displayBeers = (beers) => {
+  //Reset functions
+  changePage(1, beers);
+  pageNumbers(beers);
+  selectedPage(beers);
+  clickPage(beers);
+};
+
+let pageNumbers = (beers) => {
+  let pageNumber = document.getElementById("page_number");
+  pageNumber.innerHTML = "";
+
+  for (let i = 1; i < numPages(beers) + 1; i++) {
+    pageNumber.innerHTML += "<span class='clickPageNumber'>" + i + "</span>";
+  }
+};
+
+let numPages = (beers) => {
+  return Math.ceil(beers.length / beers_per_page);
+};
+
+let selectedPage = () => {
+  let page_number = document
+    .getElementById("page_number")
+    .getElementsByClassName("clickPageNumber");
+  console.log("pagenumber", page_number);
+  for (let i = 0; i < page_number.length; i++) {
+    if (i == current_page - 1) {
+      page_number[i].style.opacity = "1.0";
+    } else {
+      page_number[i].style.opacity = "0.5";
+    }
+  }
+};
+let clickPage = (beers) => {
+  document.addEventListener("click", function (e) {
+    if (
+      e.target.nodeName == "SPAN" &&
+      e.target.classList.contains("clickPageNumber")
+    ) {
+      current_page = e.target.textContent;
+      changePage(current_page, beers);
+    }
+  });
+};
+let prevPage = (beers) => {
+  console.log("prevPage - current-page", current_page);
+  if (current_page > 1) {
+    current_page--;
+    changePage(current_page, beers);
+  }
+};
+
+let nextPage = (beers) => {
+  if (current_page < numPages(beers)) {
+    current_page++;
+    changePage(current_page, beers);
+  }
+};
+
+let changePage = (page, beers) => {
+  const beerResultListUl = document.getElementById("beerResultList");
+  if (page < 1) {
+    page = 1;
+  }
+  if (page > numPages(beers) - 1) {
+    page = numPages(beers);
+  }
+
+  let liElements = [];
+
+  for (
+    let i = (page - 1) * beers_per_page;
+    i < page * beers_per_page && i < beers.length;
+    i++
+  ) {
+    let beer = beers[i];
     let liElement = elementFactory("li", "", "character");
     liElement.setAttribute("data-beer", JSON.stringify(beer));
     let h2Element = elementFactory("h2", beer.name);
@@ -187,10 +260,9 @@ const displayBeers = (beers) => {
     });
 
     //add it to the ul
-    //beerResultListUl.appendChild(liElement);
     liElements.push(liElement);
-  });
-
+  }
   beerResultListUl.innerHTML = "";
   liElements.forEach((item) => beerResultListUl.appendChild(item));
+  selectedPage();
 };
