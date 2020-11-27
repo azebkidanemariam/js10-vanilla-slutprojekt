@@ -21,10 +21,6 @@ for (let link of links) {
 //=======UTILITY FUNCTIONS
 function elementFactory(tag, text, cssClass) {
   const el = document.createElement(tag);
-  /*
- const contentNode = document.createTextNode(text);
- el.appendChild(contentNode);
-   */
   el.textContent = text;
   if (cssClass) {
     el.classList.add(cssClass);
@@ -105,7 +101,6 @@ const displayIngredients = (beer) => {
 
   for (let malt of maltArray) {
     let maltLiElement = elementFactory("li", "", "group-li");
-    //let maltLiElement = `<li class="group-li"><span class="detail-label">${malt.name}</span><span>- ${malt.value} ${malt.unit}</span></li>`
     let label = elementFactory("span", malt.name, "detail-label");
     let value = elementFactory(
       "span",
@@ -115,7 +110,7 @@ const displayIngredients = (beer) => {
     maltLiElement.appendChild(label);
     maltLiElement.appendChild(value);
     maltUlElement.appendChild(maltLiElement);
-    //maltUlElemnt.innerHtml = maltLiElement;
+    
   }
 
   for (let hops of hopsArray) {
@@ -252,14 +247,9 @@ let changePage = (page, beers) => {
   ) {
     let beer = beers[i];
     let liElement = elementFactory("li", "", "beer");
-    //<li><h2 ...><h2>  '<img src=""/>'</li>
     liElement.setAttribute("data-beer", JSON.stringify(beer));
     let h2Element = elementFactory("h2", beer.name);
     let imgElement = elementFactory("img");
-    /*
-    let imgElemnt = '<img src=""/>'
-    imgElemnt.setAttribute("srcc", beer.image_url)
-     */
     imgElement.setAttribute("src", beer.image_url);
     liElement.appendChild(h2Element);
     liElement.appendChild(imgElement);
